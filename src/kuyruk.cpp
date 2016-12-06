@@ -8,8 +8,28 @@ Kuyruk::Kuyruk() {
     _son = -1;
 }
 
+bool operator<(const Kuyruk &a, const Kuyruk &b) {
+    return a.rakamlarToplami() < b.rakamlarToplami();
+}
+
+bool operator>(const Kuyruk &a, const Kuyruk &b) {
+    return a.rakamlarToplami() > b.rakamlarToplami();
+}
+
 int Kuyruk::uzunluk() const {
     return _uzunluk;
+}
+
+int Kuyruk::rakamlarToplami() const {
+//    TODO if (_uzunluk < 1) throw kuyrukBosHatasi
+
+    int sayi = 0;
+
+    for (int i = 0; i < _uzunluk; i++) {
+        sayi += _kuyrukDizi[i] - '0';
+    }
+
+    return sayi;
 }
 
 void Kuyruk::genislet() {

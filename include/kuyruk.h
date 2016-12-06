@@ -15,7 +15,13 @@ private:
 public:
     Kuyruk();
 
+    friend bool operator<(const Kuyruk &a, const Kuyruk &b);
+
+    friend bool operator>(const Kuyruk &a, const Kuyruk &b);
+
     int uzunluk() const;
+
+    int rakamlarToplami() const;
 
     void kuyrugaEkle(char c);
 
