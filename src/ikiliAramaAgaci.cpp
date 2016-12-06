@@ -98,19 +98,19 @@ void IkiliAramaAgaci::elemanSil(const Kuyruk &kuyruk) {
 }
 
 std::string IkiliAramaAgaci::sirali() {
-    std::string liste = "";
+    std::string liste = std::string();
 
     return sirali(_kok, liste);
 }
 
 std::string IkiliAramaAgaci::onSirali() {
-    std::string liste = "";
+    std::string liste = std::string();
 
     return onSirali(_kok, liste);
 }
 
 std::string IkiliAramaAgaci::sonSirali() {
-    std::string liste = "";
+    std::string liste = std::string();
 
     return sonSirali(_kok, liste);
 }

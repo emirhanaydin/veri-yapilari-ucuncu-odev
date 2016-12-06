@@ -4,14 +4,20 @@
 
 
 #include "kuyruk.h"
+#include "ikiliAramaAgaci.h"
 
 class Dosya {
 private:
     const char *dosyaAdi;
+
+    void kuyrugaAktar(Kuyruk &kuyruk, const std::string &katar);
+
 public:
     Dosya(const char *dosyaAdi);
 
-    void kuyrugaAktar(Kuyruk &kuyruk);
+    int dosyaUzunlugu();
+
+    void agacaAktar(IkiliAramaAgaci &aramaAgaci, Kuyruk *kDizi, int kDiziUzunluk);
 };
 
 
