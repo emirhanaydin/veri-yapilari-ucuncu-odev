@@ -13,13 +13,13 @@ private:
 public:
     Dugum(const Kuyruk &kuyruk);
 
-    Dugum *&sol() const;
+    Dugum *&sol();
 
-    Dugum *&sag() const;
+    Dugum *&sag();
 
     const Kuyruk &kuyruk() const;
 
-    ~Dugum();
+    void ataKuyruk(const Kuyruk &kuyruk);
 };
 
 

@@ -16,6 +16,10 @@ bool operator>(const Kuyruk &a, const Kuyruk &b) {
     return a.rakamlarToplami() > b.rakamlarToplami();
 }
 
+bool operator==(const Kuyruk &a, const Kuyruk &b) {
+    return a.rakamlarToplami() == b.rakamlarToplami();
+}
+
 int Kuyruk::uzunluk() const {
     return _uzunluk;
 }
