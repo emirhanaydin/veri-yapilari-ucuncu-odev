@@ -4,13 +4,13 @@ IkiliAramaAgaci::IkiliAramaAgaci() {
     _kok = nullptr;
 }
 
-void IkiliAramaAgaci::elemanEkle(Dugum *&yavru, const Kuyruk &kuyruk) {
-    if (yavru == nullptr)
-        yavru = new Dugum(kuyruk);
-    else if (kuyruk < yavru->kuyruk()) {
-        elemanEkle(yavru->sol(), kuyruk);
-    } else if (kuyruk > yavru->kuyruk()) {
-        elemanEkle(yavru->sag(), kuyruk);
+void IkiliAramaAgaci::elemanEkle(Dugum *&dugum, const Kuyruk &kuyruk) {
+    if (dugum == nullptr)
+        dugum = new Dugum(kuyruk);
+    else if (kuyruk < dugum->kuyruk()) {
+        elemanEkle(dugum->sol(), kuyruk);
+    } else if (kuyruk > dugum->kuyruk()) {
+        elemanEkle(dugum->sag(), kuyruk);
     } else {
 //        TODO throw elemanZatenVarHatasi
 
@@ -46,17 +46,47 @@ void IkiliAramaAgaci::dugumuSil(Dugum *&dugum) {
     delete sil;
 }
 
-void IkiliAramaAgaci::elemanSil(Dugum *&yavru, const Kuyruk &kuyruk) {
-//    TODO if (yavru == nullptr) throw elemanBulunamadiHatasi
+void IkiliAramaAgaci::elemanSil(Dugum *&dugum, const Kuyruk &kuyruk) {
+//    TODO if (dugum == nullptr) throw elemanBulunamadiHatasi
 
-    if (kuyruk == yavru->kuyruk()) {
-        dugumuSil(yavru);
+    if (kuyruk == dugum->kuyruk()) {
+        dugumuSil(dugum);
         return;
-    } else if (kuyruk < yavru->kuyruk()) {
-        elemanSil(yavru->sol(), kuyruk);
+    } else if (kuyruk < dugum->kuyruk()) {
+        elemanSil(dugum->sol(), kuyruk);
     } else {
-        elemanSil(yavru->sag(), kuyruk);
+        elemanSil(dugum->sag(), kuyruk);
     }
+}
+
+std::string IkiliAramaAgaci::sirali(Dugum *dugum, std::string &liste) {
+    if (dugum != nullptr) {
+        sirali(dugum->sol(), liste);
+        liste += SSTR(dugum->kuyruk().rakamlarToplami()) + " ";
+        sirali(dugum->sag(), liste);
+    }
+
+    return liste;
+}
+
+std::string IkiliAramaAgaci::onSirali(Dugum *dugum, std::string &liste) {
+    if (dugum != nullptr) {
+        liste += SSTR(dugum->kuyruk().rakamlarToplami()) + " ";
+        sirali(dugum->sol(), liste);
+        sirali(dugum->sag(), liste);
+    }
+
+    return liste;
+}
+
+std::string IkiliAramaAgaci::sonSirali(Dugum *dugum, std::string &liste) {
+    if (dugum != nullptr) {
+        sirali(dugum->sol(), liste);
+        sirali(dugum->sag(), liste);
+        liste += SSTR(dugum->kuyruk().rakamlarToplami()) + " ";
+    }
+
+    return liste;
 }
 
 void IkiliAramaAgaci::elemanEkle(const Kuyruk &kuyruk) {
@@ -65,6 +95,24 @@ void IkiliAramaAgaci::elemanEkle(const Kuyruk &kuyruk) {
 
 void IkiliAramaAgaci::elemanSil(const Kuyruk &kuyruk) {
     elemanSil(_kok, kuyruk);
+}
+
+std::string IkiliAramaAgaci::sirali() {
+    std::string liste = "";
+
+    return sirali(_kok, liste);
+}
+
+std::string IkiliAramaAgaci::onSirali() {
+    std::string liste = "";
+
+    return onSirali(_kok, liste);
+}
+
+std::string IkiliAramaAgaci::sonSirali() {
+    std::string liste = "";
+
+    return sonSirali(_kok, liste);
 }
 
 IkiliAramaAgaci::~IkiliAramaAgaci() {
