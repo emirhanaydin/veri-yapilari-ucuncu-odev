@@ -5,6 +5,7 @@
 class Kuyruk {
 private:
     char *_kuyrukDizi;
+    int _kapasite;
     int _uzunluk;
     int _bas;
     int _son;
@@ -16,7 +17,9 @@ public:
 
     void kuyrugaEkle(char c);
 
-    void kuyruktanCikar();
+    char kuyruktanCikar();
+
+    ~Kuyruk();
 };
 
 

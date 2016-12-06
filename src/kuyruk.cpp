@@ -2,16 +2,23 @@
 
 Kuyruk::Kuyruk() {
     _kuyrukDizi = nullptr;
+    _kapasite = 0;
     _uzunluk = 0;
     _bas = -1;
     _son = -1;
 }
 
 void Kuyruk::genislet() {
-//    TODO if (_uzunluk < 1) throw exception;
+//    TODO if (_uzunluk < 1) throw kuyrukBosHatasi;
 
-    int yeniUzunluk = 2 * _uzunluk;
-    char *yeniDizi = new char[yeniUzunluk];
+    if (_kapasite < 1) {
+        _kuyrukDizi = new char[1];
+        _kapasite = 1;
+        return;
+    }
+
+    int yeniKapasite = 2 * _kapasite;
+    char *yeniDizi = new char[yeniKapasite];
 
     for (int i = 0, n = _bas + i; i < _uzunluk; ++i, ++n) {
         if (n >= _uzunluk)
@@ -27,32 +34,49 @@ void Kuyruk::genislet() {
     _son = _uzunluk; // Eski dizinin son elemanının bir sonrası
     _bas = 0;
 
-    _uzunluk = yeniUzunluk;
+    _kapasite = yeniKapasite;
 }
 
 void Kuyruk::kuyrugaEkle(char k) {
-//    Eğer dizi yoksa oluşturulur.
-    if (_kuyrukDizi == nullptr) {
-        _kuyrukDizi = new char[]{k};
+    if (_uzunluk < 1) {
         _bas = 0;
-        _son = 0;
-        _uzunluk++;
+        _son = -1; // İşlemin devamında son değeri 1 artırılacağı için -1'e eşitlenir.
     }
 
     _son++; // Eleman ekleneceğinden son değeri bir artırılır.
 
-    if (_son < _bas) { // Kuyrukta yer varsa eleman eklenir.
-        if (_son >= _uzunluk) // Her ekleme işleminde modüler bölme yapmak yerine uzunluğa ulaşıldığında sıfır yapılır.
-            _son = 0;
+    if (_son >= _kapasite) // Her ekleme işleminde modüler bölme yapmak yerine kapasiteye ulaşıldığında sıfır yapılır.
+        _son = 0;
 
-        _kuyrukDizi[_son] = k;
-    } else { // Kuyruk dolmuş demektir.
+    if (_uzunluk >= _kapasite) { // Kuyruk dolmuş demektir, genişletilir.
         genislet();
     }
 
-
+    _uzunluk++;
+    _kuyrukDizi[_son] = k;
 }
 
-void Kuyruk::kuyruktanCikar() {
-//    TODO if (_uzunluk < 1) throw exception;
+char Kuyruk::kuyruktanCikar() {
+//    TODO if (_uzunluk < 1) throw kuyrukBosHatasi;
+//    TODO if (_bas < 0) throw kuyrukBosHatasi;
+
+    char siradaki;
+
+    siradaki = _kuyrukDizi[_bas];
+
+    if (_bas == _son) {
+        _bas = _son = -1;
+    } else {
+        _bas++;
+
+        if (_bas >= _kapasite)
+            _bas = 0;
+    }
+
+    _uzunluk--;
+    return siradaki;
+}
+
+Kuyruk::~Kuyruk() {
+    delete[] _kuyrukDizi;
 }
