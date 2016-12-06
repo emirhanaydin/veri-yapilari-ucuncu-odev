@@ -15,6 +15,8 @@ private:
 public:
     Kuyruk();
 
+    int uzunluk() const;
+
     void kuyrugaEkle(char c);
 
     char kuyruktanCikar();

@@ -1,35 +1,20 @@
 #include <iostream>
 #include <kuyruk.h>
 #include <cstdlib>
+#include <dosya.h>
 
 using namespace std;
 
 int main() {
     Kuyruk *kuyruk = new Kuyruk();
 
-    kuyruk->kuyrugaEkle('a');
-    kuyruk->kuyrugaEkle('b');
-    kuyruk->kuyrugaEkle('c');
-    kuyruk->kuyrugaEkle('d');
-    kuyruk->kuyrugaEkle('e');
+    Dosya dosya(
+            "C:\\Users\\Emirhan\\OneDrive\\Belgeler\\Projeler\\Repositories\\veri-yapilari-ucuncu-odev\\sayilar.txt");
+    dosya.kuyrugaAktar(*kuyruk);
 
-    cout << kuyruk->kuyruktanCikar() << endl;
-    cout << kuyruk->kuyruktanCikar() << endl;
-    cout << kuyruk->kuyruktanCikar() << endl;
-    kuyruk->kuyrugaEkle('f');
-    kuyruk->kuyrugaEkle('g');
-    kuyruk->kuyrugaEkle('h');
-    cout << kuyruk->kuyruktanCikar() << endl;
-    cout << kuyruk->kuyruktanCikar() << endl;
-    cout << kuyruk->kuyruktanCikar() << endl;
-    cout << kuyruk->kuyruktanCikar() << endl;
-    cout << kuyruk->kuyruktanCikar() << endl;
-    kuyruk->kuyrugaEkle('i');
-    kuyruk->kuyrugaEkle('j');
-    kuyruk->kuyrugaEkle('k');
-    cout << kuyruk->kuyruktanCikar() << endl;
-    cout << kuyruk->kuyruktanCikar() << endl;
-    cout << kuyruk->kuyruktanCikar();
+    for (int i = 0, len = kuyruk->uzunluk(); i < len; i++) {
+        cout << kuyruk->kuyruktanCikar() << endl;
+    }
 
     delete kuyruk;
 

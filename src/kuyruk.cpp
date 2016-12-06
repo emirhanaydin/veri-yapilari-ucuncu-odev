@@ -8,6 +8,10 @@ Kuyruk::Kuyruk() {
     _son = -1;
 }
 
+int Kuyruk::uzunluk() const {
+    return _uzunluk;
+}
+
 void Kuyruk::genislet() {
 //    TODO if (_uzunluk < 1) throw kuyrukBosHatasi;
 
