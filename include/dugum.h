@@ -19,7 +19,7 @@ public:
 
     const Kuyruk &kuyruk() const;
 
-    void ataKuyruk(const Kuyruk &kuyruk);
+    void ayarlaKuyruk(const Kuyruk &kuyruk);
 };
 
 

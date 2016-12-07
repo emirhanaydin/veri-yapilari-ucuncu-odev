@@ -1,7 +1,8 @@
+#include <cstddef>
 #include "kuyruk.h"
 
 Kuyruk::Kuyruk() {
-    _kuyrukDizi = nullptr;
+    _kuyrukDizi = NULL;
     _kapasite = 0;
     _uzunluk = 0;
     _bas = -1;

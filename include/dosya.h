@@ -17,7 +17,7 @@ public:
 
     int dosyaUzunlugu();
 
-    void agacaAktar(IkiliAramaAgaci &aramaAgaci, Kuyruk *kDizi, int kDiziUzunluk);
+    void agacaAktar(IkiliAramaAgaci &aramaAgaci, Kuyruk *kDizi);
 };
 
 

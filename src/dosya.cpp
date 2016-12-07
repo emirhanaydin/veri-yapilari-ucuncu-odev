@@ -1,7 +1,9 @@
 #include <fstream>
 #include "dosya.h"
 
-Dosya::Dosya(const char *dosyaAdi) : dosyaAdi(dosyaAdi) {}
+Dosya::Dosya(const char *dosyaAdi) {
+    this->dosyaAdi = dosyaAdi;
+}
 
 void Dosya::kuyrugaAktar(Kuyruk &kuyruk, const std::string &katar) {
     for (int i = 0, len = katar.length(); i < len; i++) {
@@ -24,7 +26,7 @@ int Dosya::dosyaUzunlugu() {
     return uzunluk;
 }
 
-void Dosya::agacaAktar(IkiliAramaAgaci &aramaAgaci, Kuyruk *kDizi, int kDiziUzunluk) {
+void Dosya::agacaAktar(IkiliAramaAgaci &aramaAgaci, Kuyruk *kDizi) {
     std::ifstream dosyaOku(dosyaAdi);
 //    TODO if (!dosyaOku.is_open()) throw dosyaOkumaHatasi
 

@@ -1,8 +1,9 @@
+#include <cstddef>
 #include "dugum.h"
 
 Dugum::Dugum(const Kuyruk &kuyruk) {
-    _sol = nullptr;
-    _sag = nullptr;
+    _sol = NULL;
+    _sag = NULL;
     _kuyruk = kuyruk;
 }
 
@@ -18,6 +19,6 @@ const Kuyruk &Dugum::kuyruk() const {
     return _kuyruk;
 }
 
-void Dugum::ataKuyruk(const Kuyruk &kuyruk) {
+void Dugum::ayarlaKuyruk(const Kuyruk &kuyruk) {
     _kuyruk = kuyruk;
 }

@@ -1,11 +1,11 @@
 #include "IkiliAramaAgaci.h"
 
 IkiliAramaAgaci::IkiliAramaAgaci() {
-    _kok = nullptr;
+    _kok = NULL;
 }
 
 void IkiliAramaAgaci::elemanEkle(Dugum *&dugum, const Kuyruk &kuyruk) {
-    if (dugum == nullptr)
+    if (dugum == NULL)
         dugum = new Dugum(kuyruk);
     else if (kuyruk < dugum->kuyruk()) {
         elemanEkle(dugum->sol(), kuyruk);
@@ -21,20 +21,20 @@ void IkiliAramaAgaci::elemanEkle(Dugum *&dugum, const Kuyruk &kuyruk) {
 void IkiliAramaAgaci::dugumuSil(Dugum *&dugum) {
     Dugum *sil = dugum;
 
-    if (dugum->sol() == nullptr) {
+    if (dugum->sol() == NULL) {
         dugum = dugum->sag();
-    } else if (dugum->sag() == nullptr) {
+    } else if (dugum->sag() == NULL) {
         dugum = dugum->sol();
     } else {
         sil = dugum->sag();
         Dugum *ebeveyn = dugum;
 
-        while (sil->sol() != nullptr) {
+        while (sil->sol() != NULL) {
             ebeveyn = sil;
             sil = sil->sol();
         }
 
-        dugum->ataKuyruk(sil->kuyruk());
+        dugum->ayarlaKuyruk(sil->kuyruk());
 
         if (ebeveyn == dugum) {
             dugum->sag() = sil->sag();
@@ -47,7 +47,7 @@ void IkiliAramaAgaci::dugumuSil(Dugum *&dugum) {
 }
 
 void IkiliAramaAgaci::elemanSil(Dugum *&dugum, const Kuyruk &kuyruk) {
-//    TODO if (dugum == nullptr) throw elemanBulunamadiHatasi
+//    TODO if (dugum == NULL) throw elemanBulunamadiHatasi
 
     if (kuyruk == dugum->kuyruk()) {
         dugumuSil(dugum);
@@ -60,7 +60,7 @@ void IkiliAramaAgaci::elemanSil(Dugum *&dugum, const Kuyruk &kuyruk) {
 }
 
 std::string IkiliAramaAgaci::sirali(Dugum *dugum, std::string &liste) {
-    if (dugum != nullptr) {
+    if (dugum != NULL) {
         sirali(dugum->sol(), liste);
         liste += SSTR(dugum->kuyruk().rakamlarToplami()) + " ";
         sirali(dugum->sag(), liste);
@@ -70,7 +70,7 @@ std::string IkiliAramaAgaci::sirali(Dugum *dugum, std::string &liste) {
 }
 
 std::string IkiliAramaAgaci::onSirali(Dugum *dugum, std::string &liste) {
-    if (dugum != nullptr) {
+    if (dugum != NULL) {
         liste += SSTR(dugum->kuyruk().rakamlarToplami()) + " ";
         sirali(dugum->sol(), liste);
         sirali(dugum->sag(), liste);
@@ -80,7 +80,7 @@ std::string IkiliAramaAgaci::onSirali(Dugum *dugum, std::string &liste) {
 }
 
 std::string IkiliAramaAgaci::sonSirali(Dugum *dugum, std::string &liste) {
-    if (dugum != nullptr) {
+    if (dugum != NULL) {
         sirali(dugum->sol(), liste);
         sirali(dugum->sag(), liste);
         liste += SSTR(dugum->kuyruk().rakamlarToplami()) + " ";
@@ -116,7 +116,7 @@ std::string IkiliAramaAgaci::sonSirali() {
 }
 
 IkiliAramaAgaci::~IkiliAramaAgaci() {
-    while (_kok != nullptr) {
+    while (_kok != NULL) {
         dugumuSil(_kok);
     }
 }
