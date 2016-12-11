@@ -1,3 +1,15 @@
+/**
+* @file dosya.cpp
+* @description Açıklama ilgili başlık dosyasında yapılmıştır.
+* @course 2A
+* @assignment 3
+* @date 6.12.2016
+* @authors
+ * Emirhan Aydın (g141210018@sakarya.edu.tr)
+ * Oğuzhan Şahin (g141210066@sakarya.edu.tr)
+*/
+
+
 #include <fstream>
 #include "dosya.h"
 

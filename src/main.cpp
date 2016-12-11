@@ -1,3 +1,15 @@
+/**
+* @file main.cpp
+* @description Ağaç yapısının ve ağaçta yer alan kuyrukların ekrana yazdırıldığı ana program.
+* @course 2A
+* @assignment 3
+* @date 6.12.2016
+* @authors
+ * Emirhan Aydın (g141210018@sakarya.edu.tr)
+ * Oğuzhan Şahin (g141210066@sakarya.edu.tr)
+*/
+
+
 #include <iostream>
 #include <ikiliAramaAgaci.h>
 #include <dosya.h>

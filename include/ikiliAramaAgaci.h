@@ -1,3 +1,16 @@
+/**
+* @file ikiliAramaAgaci.h
+* @description Veriler üzerinde ortalama arama karmaşıklığının çok daha düşük olmasını sağlayan ikili arama ağacı veri
+ * yapısı. Kuyruk nesnesi barındıran düğümler ile çalışacak şekilde özelleştirilmiştir.
+* @course 2A
+* @assignment 3
+* @date 6.12.2016
+* @authors
+ * Emirhan Aydın (g141210018@sakarya.edu.tr)
+ * Oğuzhan Şahin (g141210066@sakarya.edu.tr)
+*/
+
+
 #ifndef IKILIARAMAAGACI_H
 #define IKILIARAMAAGACI_H
 

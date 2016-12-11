@@ -1,3 +1,14 @@
+/**
+* @file hata.h
+* @description Hata tanımlamalarının yapıldığı başlık dosyası.
+* @course 2A
+* @assignment 3
+* @date 11.12.2016
+* @authors
+ * Emirhan Aydın (g141210018@sakarya.edu.tr)
+ * Oğuzhan Şahin (g141210066@sakarya.edu.tr)
+*/
+
 
 #ifndef HATA_H
 #define HATA_H

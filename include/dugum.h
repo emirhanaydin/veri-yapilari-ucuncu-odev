@@ -1,3 +1,14 @@
+/**
+* @file dugum.cpp
+* @description İkili ağaçta kullanılan ve veri olarak kuyruk nesnesi barındıran veri yapısı.
+* @course 2A
+* @assignment 3
+* @date 6.12.2016
+* @authors
+ * Emirhan Aydın (g141210018@sakarya.edu.tr)
+ * Oğuzhan Şahin (g141210066@sakarya.edu.tr)
+*/
+
 
 #ifndef DUGUM_H
 #define DUGUM_H
