@@ -83,8 +83,8 @@ std::string IkiliAramaAgaci::sirali(Dugum *dugum, std::string &liste) {
 std::string IkiliAramaAgaci::onSirali(Dugum *dugum, std::string &liste) {
     if (dugum != NULL) {
         liste += SSTR(dugum->kuyruk().rakamlarToplami()) + " ";
-        sirali(dugum->sol(), liste);
-        sirali(dugum->sag(), liste);
+        onSirali(dugum->sol(), liste);
+        onSirali(dugum->sag(), liste);
     }
 
     return liste;
@@ -92,8 +92,8 @@ std::string IkiliAramaAgaci::onSirali(Dugum *dugum, std::string &liste) {
 
 std::string IkiliAramaAgaci::sonSirali(Dugum *dugum, std::string &liste) {
     if (dugum != NULL) {
-        sirali(dugum->sol(), liste);
-        sirali(dugum->sag(), liste);
+        sonSirali(dugum->sol(), liste);
+        sonSirali(dugum->sag(), liste);
         liste += SSTR(dugum->kuyruk().rakamlarToplami()) + " ";
     }
 
