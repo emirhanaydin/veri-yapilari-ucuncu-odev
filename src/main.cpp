@@ -20,7 +20,7 @@ using namespace std;
 int main() {
     IkiliAramaAgaci *aramaAgaci = new IkiliAramaAgaci();
 
-    const char *dosyaAdi = "sayilar.txt";
+    const char *dosyaAdi = "C:\\Users\\Emirhan\\OneDrive\\Belgeler\\Projeler\\Repositories\\veri-yapilari-ucuncu-odev\\sayilar.txt";
     Dosya *dosya = new Dosya(dosyaAdi);
     int satirSayisi = dosya->satirSayisi();
 
