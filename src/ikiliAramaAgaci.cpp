@@ -1,10 +1,11 @@
+#include <hata.h>
 #include "IkiliAramaAgaci.h"
 
 IkiliAramaAgaci::IkiliAramaAgaci() {
     _kok = NULL;
 }
 
-void IkiliAramaAgaci::elemanEkle(Dugum *&dugum, const Kuyruk &kuyruk) {
+void IkiliAramaAgaci::elemanEkle(Dugum *&dugum, const Kuyruk &kuyruk) throw(ElemanZatenVarHatasi) {
     if (dugum == NULL)
         dugum = new Dugum(kuyruk);
     else if (kuyruk < dugum->kuyruk()) {
@@ -12,9 +13,7 @@ void IkiliAramaAgaci::elemanEkle(Dugum *&dugum, const Kuyruk &kuyruk) {
     } else if (kuyruk > dugum->kuyruk()) {
         elemanEkle(dugum->sag(), kuyruk);
     } else {
-//        TODO throw elemanZatenVarHatasi
-
-        return;
+        throw ElemanZatenVarHatasi();
     }
 }
 
@@ -46,8 +45,8 @@ void IkiliAramaAgaci::dugumuSil(Dugum *&dugum) {
     delete sil;
 }
 
-void IkiliAramaAgaci::elemanSil(Dugum *&dugum, const Kuyruk &kuyruk) {
-//    TODO if (dugum == NULL) throw elemanBulunamadiHatasi
+void IkiliAramaAgaci::elemanSil(Dugum *&dugum, const Kuyruk &kuyruk) throw(ElemanBulunamadiHatasi) {
+    if (dugum == NULL) throw ElemanBulunamadiHatasi();
 
     if (kuyruk == dugum->kuyruk()) {
         dugumuSil(dugum);

@@ -3,21 +3,30 @@
 #define DOSYA_H
 
 
+#include "hata.h"
 #include "kuyruk.h"
 #include "ikiliAramaAgaci.h"
 
 class Dosya {
 private:
-    const char *dosyaAdi;
+    const char *_dosyaAdi;
+
+    int _satirSayisi;
+
+    std::string _dosyaIcerigi;
+
+    bool rakamMi(char karakter);
 
     void kuyrugaAktar(Kuyruk &kuyruk, const std::string &katar);
 
 public:
     Dosya(const char *dosyaAdi);
 
-    int dosyaUzunlugu();
+    int satirSayisi() const;
 
-    void agacaAktar(IkiliAramaAgaci &aramaAgaci, Kuyruk *kDizi);
+    void dosyayiOku() throw(DosyaAcmaHatasi);
+
+    void agacaAktar(IkiliAramaAgaci &aramaAgaci, Kuyruk *kDizi) throw(DosyaUygunDegilHatasi);
 };
 
 

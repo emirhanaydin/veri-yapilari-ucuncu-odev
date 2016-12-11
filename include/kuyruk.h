@@ -1,6 +1,7 @@
 #ifndef KUYRUK_H
 #define KUYRUK_H
 
+#include "hata.h"
 
 class Kuyruk {
 private:
@@ -12,6 +13,8 @@ private:
 
     void genislet();
 
+    bool bosMu() const;
+
 public:
     Kuyruk();
 
@@ -21,13 +24,15 @@ public:
 
     friend bool operator==(const Kuyruk &a, const Kuyruk &b);
 
+    char operator[](int i) throw(IndeksAralikDisindaHatasi);
+
     int uzunluk() const;
 
-    int rakamlarToplami() const;
+    int rakamlarToplami() const throw(KuyrukBosHatasi);
 
     void kuyrugaEkle(char c);
 
-    char kuyruktanCikar();
+    char kuyruktanCikar() throw(KuyrukBosHatasi);
 
     ~Kuyruk();
 };

@@ -1,4 +1,4 @@
-#include <cstddef>
+
 #include "kuyruk.h"
 
 Kuyruk::Kuyruk() {
@@ -21,25 +21,13 @@ bool operator==(const Kuyruk &a, const Kuyruk &b) {
     return a.rakamlarToplami() == b.rakamlarToplami();
 }
 
-int Kuyruk::uzunluk() const {
-    return _uzunluk;
-}
+char Kuyruk::operator[](int i) throw(IndeksAralikDisindaHatasi) {
+    if (i < 0 || i >= _uzunluk) throw IndeksAralikDisindaHatasi();
 
-int Kuyruk::rakamlarToplami() const {
-//    TODO if (_uzunluk < 1) throw kuyrukBosHatasi
-
-    int sayi = 0;
-
-    for (int i = 0; i < _uzunluk; i++) {
-        sayi += _kuyrukDizi[i] - '0';
-    }
-
-    return sayi;
+    return _kuyrukDizi[i];
 }
 
 void Kuyruk::genislet() {
-//    TODO if (_uzunluk < 1) throw kuyrukBosHatasi;
-
     if (_kapasite < 1) {
         _kuyrukDizi = new char[1];
         _kapasite = 1;
@@ -66,6 +54,26 @@ void Kuyruk::genislet() {
     _kapasite = yeniKapasite;
 }
 
+bool Kuyruk::bosMu() const {
+    return _uzunluk < 1;
+}
+
+int Kuyruk::uzunluk() const {
+    return _uzunluk;
+}
+
+int Kuyruk::rakamlarToplami() const throw(KuyrukBosHatasi) {
+    if (bosMu()) throw KuyrukBosHatasi();
+
+    int sayi = 0;
+
+    for (int i = 0; i < _uzunluk; i++) {
+        sayi += _kuyrukDizi[i] - '0';
+    }
+
+    return sayi;
+}
+
 void Kuyruk::kuyrugaEkle(char k) {
     if (_uzunluk < 1) {
         _bas = 0;
@@ -85,9 +93,8 @@ void Kuyruk::kuyrugaEkle(char k) {
     _kuyrukDizi[_son] = k;
 }
 
-char Kuyruk::kuyruktanCikar() {
-//    TODO if (_uzunluk < 1) throw kuyrukBosHatasi;
-//    TODO if (_bas < 0) throw kuyrukBosHatasi;
+char Kuyruk::kuyruktanCikar() throw(KuyrukBosHatasi) {
+    if (bosMu() || _bas < 0) throw KuyrukBosHatasi();
 
     char siradaki;
 

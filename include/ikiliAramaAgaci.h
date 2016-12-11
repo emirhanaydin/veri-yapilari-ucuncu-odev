@@ -2,20 +2,32 @@
 #define IKILIARAMAAGACI_H
 
 
-#include "dugum.h"
 #include <sstream>
+#include "dugum.h"
+#include "hata.h"
 
+// Sayıyı String değere dönüştürmek için kullanılan makro
 #define SSTR(x) static_cast<std::ostringstream &>(std::ostringstream() << x).str()
 
 class IkiliAramaAgaci {
 private:
     Dugum *_kok;
 
-    void elemanEkle(Dugum *&dugum, const Kuyruk &kuyruk);
+    /**
+     * Özyinelemeli olarak çalışır ve her seferinde başta gönderilen düğümün alt düğümlerini parametre olarak alır.
+     * @param dugum Bu düğümden başlanarak boş bir düğüm bulunana kadar alt düğümlere bakılır.
+     * @param kuyruk Düğüme eklenecek olan kuyruk, özyinelemede sabit olarak kalır.
+     * @throws ElemanZatenVarHatasi Eklenecek olan eleman zaten var ise hata fırlatılır.
+     */
+    void elemanEkle(Dugum *&dugum, const Kuyruk &kuyruk) throw(ElemanZatenVarHatasi);
 
+    /**
+     * Düğüm için alt düğümlerin var olma durumlarına bakılır ve buna göre silme işlemi uygulanır.
+     * @param dugum Silinecek olan düğüm.
+     */
     void dugumuSil(Dugum *&dugum);
 
-    void elemanSil(Dugum *&dugum, const Kuyruk &kuyruk);
+    void elemanSil(Dugum *&dugum, const Kuyruk &kuyruk) throw(ElemanBulunamadiHatasi);
 
     std::string sirali(Dugum *dugum, std::string &liste);
 
